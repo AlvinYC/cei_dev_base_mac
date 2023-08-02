@@ -67,6 +67,15 @@ RUN cd ~/ ; mkdir .ssh ;\
     fc-cache -fv  ;\
     sudo chsh -s $(which zsh) ${user}
 
+# fix bug on Debian 11, ssh to zsh, POWERLEVEL9K  print_icon issue
+RUN sudo apt-get upgrade -y ;\
+    sudo apt-get install locales -y;\
+    sudo echo "LANGUAGE=en_US.UTF-8" > /etc/default/locale;\
+    sudo echo "LC_ALL=en_US.UTF-8" > /etc/default/locale;\
+    sudo echo "LANG=en_US.UTF-8" > /etc/default/locale;\
+    sudo echo "LC_CTYPE=en_US.UTF-8" > /etc/default/locale;\
+    sudo localedef -i en_US -f UTF-8 en_US.UTF-8
+
 # vscode server part
 RUN curl -sSL "https://update.code.visualstudio.com/commit:${vscommit}/server-linux-x64/stable" -o /home/${user}/vscode-server-linux-x64.tar.gz;\
     mkdir -p ~/.vscode-server/bin/${vscommit};\
