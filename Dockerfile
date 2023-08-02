@@ -68,12 +68,9 @@ RUN cd ~/ ; mkdir .ssh ;\
     sudo chsh -s $(which zsh) ${user}
 
 # fix bug on Debian 11, ssh to zsh, POWERLEVEL9K  print_icon issue
+# ref: https://stackoverflow.com/questions/2499794/how-to-fix-a-locale-setting-warning-from-perl
 RUN sudo apt-get upgrade -y ;\
     sudo apt-get install locales -y;\
-    sudo echo "LANGUAGE=en_US.UTF-8" > /etc/default/locale;\
-    sudo echo "LC_ALL=en_US.UTF-8" > /etc/default/locale;\
-    sudo echo "LANG=en_US.UTF-8" > /etc/default/locale;\
-    sudo echo "LC_CTYPE=en_US.UTF-8" > /etc/default/locale;\
     sudo localedef -i en_US -f UTF-8 en_US.UTF-8
 
 # vscode server part
