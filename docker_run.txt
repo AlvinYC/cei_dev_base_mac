@@ -3,5 +3,4 @@
  --shm-size=256m\
  -p 7788:22\
  -p 8888:8888\
- -v /Users/alvin/dataset/coco2014:/home/docker/coco_data2014\
  --name dev devmac:0.1
