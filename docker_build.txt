@@ -1,0 +1,3 @@
+docker build -t devmac:0.2 no-cache .
+#docker build --platform linux/amd64 -t devmac:0.2 no-cache .
+
